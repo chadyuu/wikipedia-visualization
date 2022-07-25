@@ -17,7 +17,7 @@ draw = function (data, num) {
 		.text(function (d) { return d.value; })
 }	
 
-data = d3.csv("data/cnt.csv")
+data = d3.csv("./data/cnt.csv")
 	.then(function (data) {
 		draw(data, selected_num.value);
 		
