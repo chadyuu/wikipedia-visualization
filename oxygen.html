@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/pagenation.css">
+  <link rel="stylesheet" href="css/table.css">
+  <link rel="stylesheet" href="css/d3-annotation.css">
+</head>
+
+<body>
+  <div class="flex-container">
+    <div class="flex-item-left left">
+      <a href="table.html" class="previous">&laquo; table</a>
+    </div>
+  </div>
+ 
+  <div class="flex-container">
+    <p>Select an article:</p>
+    <div style="padding:12px;">
+      <a href="us.html" class="previous">United_States</a>
+    </div>
+    <div style="padding:12px;">
+      <a href="bird.html" class="previous">bird</a>
+    </div>
+    <div style="padding:12px;">
+      <a href="oxygen.html" class="selected">oxygen</a>
+    </div>
+  </div>
+  <hr>
+
+  <h1>The link network around the "oxygen" article</h1>
+  <h2>Link Network</h2>
+  <p>The "oxygen" artcile has <span id = "cnt" style="font-weight: bold; font-size: 2em;"></span> inbound links.</p>
+  <p>The size of nodes represents the logged-number of inbound links to the given node. <br>
+    I.e., the larger nodes have more inbound links, which give more value to the target nodes.</p>
+  <svg id="force"></svg>
+
+  <h2>The TOP 20 most significant articles with outbound links toward "United_States"</h2>
+  <p>
+    8 out of TOP 20 are chemical-element-related articles, such as "Iron," "Water," and "Gold."
+    In addition, there are articles roughly related with chemical elements, such as "Earth," "Sun," and "Petroleum."
+  </p>
+  <svg id="bar"></svg>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="./js/read_csv.js"></script>
+  <script src="./js/force.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/2.5.1/d3-annotation.min.js"
+    integrity="sha512-iBAeBWWWFb8HqSBcrqcz98iIpuVH1la39dEYHtyQ/pGpeCQTQVvLJOWAuhv2Q7JSHp9k7hWA7sGxU3hHJe+tFg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./js/bar.js"></script>
+  <script src="./js/annotate_oxygen.js"></script>
+
+  <script>
+    execute = async function (target_id) {
+      await read_csv(target_id);
+      d3.select("#cnt").text(nodes.find(n => n.id == target_id).cnt);
+      await draw_force();
+      await draw_bar(target_id, 20);
+      await annotate_oxygen();
+    }
+    execute(3118);
+  </script>
+
+</body>
+
+</html>

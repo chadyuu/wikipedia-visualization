@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/pagenation.css">
+  <link rel="stylesheet" href="css/table.css">
+  <link rel="stylesheet" href="css/d3-annotation.css">
+</head>
+
+<body>
+  <div class="flex-container">
+    <div class="flex-item-left left">
+      <a href="table.html" class="previous">&laquo; table</a>
+    </div>
+  </div>
+
+  <div class="flex-container">
+    <p>Select an article:</p>
+    <div style="padding:12px;">
+      <a href="us.html" class="selected">United_States</a>
+    </div>
+    <div style="padding:12px;">
+      <a href="bird.html" class="previous">bird</a>
+    </div>
+    <div style="padding:12px;">
+      <a href="oxygen.html" class="previous">oxygen</a>
+    </div>
+  </div>
+  <hr>
+
+  <h1>The link network around the "United_States" article</h1>
+  <h2>Link Network</h2>
+  <p>The "United_State" artcile has <span id = "cnt" style="font-weight: bold; font-size: 2em;"></span> inbound links.</p>
+  <p>The size of nodes represents the logged-number of inbound links to the given node. <br>
+    I.e., the larger nodes have more inbound links, which give more value to the target nodes.</p>
+  <p>
+    You can freely explore the link network by hovering the mouse over each node, which generates popups to show the article title and the number of inbound links to the given article.
+  </p>
+  <svg id="force"></svg>
+
+  <h2>The TOP 20 most significant articles with outbound links toward "United_States"</h2>
+  <p>
+    15 out of TOP 20 are country-related articles, such as "France," "Germany," and "India."
+  </p>
+  <svg id="bar"></svg>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="./js/read_csv.js"></script>
+  <script src="./js/force.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/2.5.1/d3-annotation.min.js"
+    integrity="sha512-iBAeBWWWFb8HqSBcrqcz98iIpuVH1la39dEYHtyQ/pGpeCQTQVvLJOWAuhv2Q7JSHp9k7hWA7sGxU3hHJe+tFg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./js/bar.js"></script>
+  <script src="./js/annotate_us.js"></script>
+
+  <script>
+    execute = async function (target_id) {
+      await read_csv(target_id);
+      d3.select("#cnt").text(nodes.find(n => n.id == target_id).cnt);
+      await draw_force();
+      await draw_bar(target_id, 20);
+      await annotate_us();
+    }
+    execute(4289);
+  </script>
+
+</body>
+
+</html>

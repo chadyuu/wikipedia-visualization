@@ -1,0 +1,37 @@
+body {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}
+
+.center {
+	text-align: center;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+	text-align: center;
+	/* height: 700px; */
+}
+
+.flex-item-left {
+	padding: 10px;
+	flex: 50%;
+}
+
+.flex-item-right {
+	padding: 10px;
+	flex: 50%;
+}
