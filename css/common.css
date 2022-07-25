@@ -35,3 +35,16 @@ body {
 	padding: 10px;
 	flex: 50%;
 }
+
+.highlight {
+	font-weight: bold; 
+	font-size: 1.5em; 
+	color: #E8336D;
+}
+
+.info {
+	margin-bottom: 15px;
+	padding: 4px 12px;
+	background-color: #e7f3fe;
+	border-left: 6px solid #2196F3;
+}
