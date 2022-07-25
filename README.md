@@ -34,9 +34,9 @@ CREATE TABLE node (id INTEGER PRIMARY KEY AUTOINCREMENT, node text UNIQUE);
 INSERT INTO node (node)
 SELECT distinct(node) FROM
 (
-	SELECT DISTINCT(source) as node FROM links
-	UNION
-	SELECT DISTINCT(target) as node FROM links
+  SELECT DISTINCT(source) as node FROM links
+  UNION
+  SELECT DISTINCT(target) as node FROM links
 );
 ```
 
@@ -64,9 +64,9 @@ SELECT node.id, node.node, IFNULL(cnt, 0) as cnt
 FROM node
 LEFT JOIN
 (
-	SELECT target, COUNT(*) as cnt
-	FROM edge
-	GROUP BY target
+  SELECT target, COUNT(*) as cnt
+  FROM edge
+  GROUP BY target
 )a
 on a.target = node.id
 ORDER BY cnt DESC;
