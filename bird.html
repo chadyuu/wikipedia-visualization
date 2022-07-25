@@ -12,7 +12,7 @@
 <body>
   <div class="flex-container">
     <div class="flex-item-left left">
-      <a href="table.html" class="previous">&laquo; table</a>
+      <a href="table.html" class="previous">&laquo; Table</a>
     </div>
   </div>
 
@@ -31,18 +31,39 @@
   <hr>
 
   <h1>The link network around the "bird" article</h1>
-  <h2>Link Network</h2>
-  <p>The "bird" artcile has <span id = "cnt" style="font-weight: bold; font-size: 2em;"></span> inbound links.</p>
-  <p>The size of nodes represents the logged-number of inbound links to the given node. <br>
-    I.e., the larger nodes have more inbound links, which give more value to the target nodes.</p>
+
+  <h2>Link Network with "bird" centered</h2>
+
   <svg id="force"></svg>
 
-  <h2>The TOP 20 most significant articles with outbound links toward "United_States"</h2>
+  <p>The "bird" artcile has <span id="cnt" class="highlight"></span> inbound links.</p>
+
+  <div class="info">
+    <strong>Info:</strong>
+    <p>
+      The size of nodes represents the log-transformed number of inbound links to the given node. I.e., the larger nodes
+      have more inbound links, which represents more significance on Wikipedia.
+    </p>
+    <p>
+      You can freely explore the link network by hovering the mouse over each node, which generates popups to show the
+      article title and the number of inbound links to the given article.
+    </p>
+  </div>
+
+  <h2>The TOP 20 most significant articles with outbound links toward "bird"</h2>
   <p>
-    7 out of TOP 20 are animal-related articles, such as "Animal," "Chordate," and "Mammal."
-    In addition, there are articles roughly related with animal, such as "Evolution," "Biodiversity," and "Extinction."
+    7 out of TOP 20 are <span class="highlight">animal-related</span> articles, such as "Animal," "Chordate," and "Mammal."
+    In addition, there are several articles roughly related with animal, such as "Evolution," "Biodiversity," and "Extinction."
   </p>
   <svg id="bar"></svg>
+
+  <div class="info">
+    <strong>Info:</strong>
+    <p>
+      You can see popups when hovering the mouse over each bar and confirm the exact number of inbound links for the given
+      article.
+    </p>
+  </div>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="./js/read_csv.js"></script>

@@ -54,4 +54,11 @@ draw_bar = function (target_id, num) {
 	svg.append("g")
 		.attr("transform", "translate(50,50)")
 		.call(d3.axisLeft(ys));
+	
+	svg.append("text")
+		.attr("text-anchor", "end")
+		.attr("transform", "rotate(-90)")
+		.attr("y", 10)
+		.attr("x", - height / 2)
+		.text("#inbound links")
 }	
